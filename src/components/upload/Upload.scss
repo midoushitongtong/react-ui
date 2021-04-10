@@ -1,0 +1,84 @@
+@import '../../styles/variable';
+@import '../../styles/normalize';
+
+.upload-file-container {
+  .upload-file-input {
+    display: none;
+  }
+
+  .upload-trigger-area {
+    display: flex;
+    .upload-dragger {
+      padding: 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 5px dashed #ddd;
+      &.is-drag-over {
+        background-color: #d5e9ff;
+        border-color: #65b5ea;
+      }
+    }
+  }
+
+  .upload-file-list {
+    margin: 0;
+    padding: 0;
+    width: max-content;
+    min-width: 235px;
+    max-width: 100%;
+    list-style-type: none;
+    .upload-file-list-item {
+      position: relative;
+      margin-top: 0.5rem;
+      padding: 0.5rem 2.35rem 0.5rem 0.5rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      &:hover {
+        background-color: $gray-200;
+        .file-status {
+          display: none;
+        }
+        .file-actions {
+          display: block;
+        }
+      }
+      &:first-child {
+        margin-top: 1rem;
+      }
+      .file-name {
+        display: flex;
+        align-items: center;
+        word-break: break-word;
+        &.file-name-error {
+          color: $danger;
+          svg {
+            color: $danger;
+          }
+        }
+        svg {
+          margin-right: 0.75rem;
+          color: $gray-500;
+        }
+      }
+      .file-status {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        transform: translateY(-50%);
+      }
+      .file-actions {
+        display: none;
+        position: absolute;
+        top: 50%;
+        right: 11px;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+      .progress {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}

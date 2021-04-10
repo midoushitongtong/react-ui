@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "start": "nodemon index.ts --exec \"ts-node\" index.ts"
+  }
+}

@@ -1,0 +1,33 @@
+@import '../../styles/variable';
+@import '../../styles/normalize';
+
+.progress {
+  width: 100%;
+  .progress-outer {
+    position: relative;
+    overflow: hidden;
+    border-radius: $progress-border-radius;
+    background-color: $progress-background-color;
+    .progress-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      border-radius: $progress-border-radius;
+      transition: $progress-inner-transition;
+      @each $key, $value in $theme-colors {
+        &.color-#{$key} {
+          background-color: $value;
+        }
+      }
+      .text {
+        font-size: $progress-inner-font-size;
+        color: $progress-inner-color;
+        margin: 0 5px;
+      }
+    }
+  }
+}

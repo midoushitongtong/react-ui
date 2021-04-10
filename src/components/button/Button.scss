@@ -1,0 +1,70 @@
+@import '../../styles/variable';
+@import '../../styles/normalize';
+@import '../../styles/mixin';
+
+.btn {
+  @include btn-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
+  position: relative;
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  color: $body-color;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  background-image: none;
+  border: $btn-border-width solid transparent;
+  box-shadow: $btn-box-shadow;
+  cursor: pointer;
+  transition: $btn-transition;
+  outline: none;
+  text-decoration: none;
+
+  // disabled
+  &.disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: $btn-disabled-opacity;
+    box-shadow: none;
+    &:focus {
+      pointer-events: none;
+    }
+  }
+}
+
+// 按钮 - 大小
+.btn-sm {
+  @include btn-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+}
+.btn-lg {
+  @include btn-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+}
+
+// 按钮 - 类型
+.btn-primary {
+  @include btn-type($white, $primary, $primary);
+}
+.btn-danger {
+  @include btn-type($white, $danger, $danger);
+}
+.btn-default {
+  @include btn-type($body-color, $white, $gray-500, $primary, $white, $primary);
+}
+.btn-link {
+  font-weight: $font-weight-normal;
+  color: $btn-link-color;
+  text-decoration: none;
+  box-shadow: none;
+  &:hover,
+  &:focus {
+    color: $btn-link-hover-color;
+    text-decoration: none;
+  }
+  &.disabled {
+    &:hover,
+    &:focus {
+      color: $btn-link-color;
+      text-decoration: none;
+    }
+  }
+}
