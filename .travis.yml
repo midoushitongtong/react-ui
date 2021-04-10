@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   - '12'
-script: yarn build-storybook
+script: yarn install && yarn test:nowatch && yarn build-storybook
 deploy:
   provider: pages
   skip_cleanup: true
