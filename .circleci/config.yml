@@ -1,0 +1,71 @@
+version: 2.1
+
+# -------------------------
+# executors
+# -------------------------
+executors:
+  default:
+    docker:
+      - image: circleci/node:15
+    working_directory: ~/project
+
+# -------------------------
+# jobs
+# -------------------------
+jobs:
+  install-dependencies:
+    executor: default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - persist_to_workspace:
+          root: .
+          paths: .
+
+  lint-and-typecheck:
+    executor: default
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Lint files
+          command: yarn lint
+      - run:
+          name: Typecheck files
+          command: yarn typescript
+
+  unit-tests:
+    executor: default
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Run unit tests
+          command: yarn test:nowatch
+
+# -------------------------
+# workflows
+# -------------------------
+workflows:
+  build-and-test:
+    jobs:
+      - install-dependencies
+      - lint-and-typecheck:
+          requires:
+            - install-dependencies
+      - unit-tests:
+          requires:
+            - install-dependencies

@@ -9,10 +9,10 @@
   "keywords": [
     "react"
   ],
-  "homepage": "https://github.com/midoushitongtong/garbage/tree/master/react-ui",
+  "homepage": "https://github.com/midoushitongtong/react-ui",
   "repository": {
     "type": "git",
-    "url": "https://github.com/midoushitongtong/garbage.git"
+    "url": "https://github.com/midoushitongtong/react-ui.git"
   },
   "files": [
     "dist"
