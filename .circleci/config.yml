@@ -65,16 +65,19 @@ workflows:
       - install-dependencies:
           filters:
             branches:
-              ignore: gh-pages
+              ignore:
+                - gh-pages
       - lint-and-typecheck:
           filters:
             branches:
-              ignore: gh-pages
+              ignore:
+                - gh-pages
           requires:
             - install-dependencies
       - unit-tests:
           filters:
             branches:
-              ignore: gh-pages
+              ignore:
+                - gh-pages
           requires:
             - install-dependencies
