@@ -52,6 +52,9 @@ export const Size: Story<ButtonProps> = (args) => (
 // ==============================================================================================================================================================================================================================================
 export const Type: Story<ButtonProps> = (args) => (
   <>
+    <Button {...args} type="default">
+      default button
+    </Button>
     <Button {...args} type="primary">
       primary button
     </Button>
