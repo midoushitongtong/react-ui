@@ -20,7 +20,7 @@
   "scripts": {
     "eject": "react-scripts eject",
     "test": "yarn clean:dev && yarn build-scss:dev && react-scripts test --watchAll",
-    "test:nowatch": "yarn clean:dev &&yarn build-scss:dev && react-scripts test --watchAll=false",
+    "test:nowatch": "yarn clean:dev && yarn build-scss:dev && react-scripts test --watchAll=false",
     "prettier": "prettier --write \"**/*.{ts,tsx,.js,.jsx}\"",
     "lint": "eslint \"**/*.{ts,tsx,.js,.jsx}\"",
     "typescript": "tsc --noEmit",

@@ -20,14 +20,14 @@ jobs:
       - attach_workspace:
           at: ~/project
       - restore_cache:
-          name: Restore Yarn Package Cache
+          name: Restore yarn package cache
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
       - save_cache:
-          name: Save Yarn Package Cache
+          name: Save yarn package cache
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
@@ -56,6 +56,38 @@ jobs:
           name: Run unit tests
           command: yarn test:nowatch
 
+  docs-build:
+    executor: default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Build docs
+          command: yarn build-storybook
+      - persist_to_workspace:
+          root: .
+          paths: .
+
+  docs-depoly:
+    executor: default
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Install gh-pages dependencies and configure git
+          command: |
+            yarn add gh-pages@2.0.1
+            git config user.email "1092879991@qq.com"
+            git config user.name "midoushitongtong"
+      - add_ssh_keys:
+          fingerprints:
+            - "3e:d5:64:82:59:39:a4:e6:89:34:a9:26:83:ab:2e:41"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: yarn gh-pages --message "Updates github pages [skip ci]" --dist storybook-static
+
 # -------------------------
 # workflows
 # -------------------------
@@ -69,3 +101,10 @@ workflows:
       - unit-tests:
           requires:
             - install-dependencies
+      - docs-build:
+          requires:
+            - install-dependencies
+      - docs-depoly:
+          requires:
+            - install-dependencies
+            - docs-build
