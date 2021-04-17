@@ -1,13 +1,4 @@
 language: node_js
 node_js:
-  - '12'
-script: yarn install && yarn test:nowatch && yarn build-storybook
-deploy:
-  provider: pages:git
-  edge: true
-  token: $github_token
-  target_branch: gh-pages
-  local_dir: storybook-static
-  on:
-    branch: main
-  commit_message: "abc"
+  - '15'
+script: yarn install && yarn lint && yarn typescript && yarn test:nowatch
