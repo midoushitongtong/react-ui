@@ -9,4 +9,4 @@ deploy:
   local_dir: storybook-static
   on:
     branch: main
-  commit_message: Deploy github pages [ci skip]
+  commit_message: "Deploy github pages [ci skip]"

@@ -1,3 +1,5 @@
 .history
 dist
 storybook-static
+.travis.yml
+.circleci/config.yml

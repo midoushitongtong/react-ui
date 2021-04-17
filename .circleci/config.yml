@@ -62,7 +62,7 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      - install-dependencies:
+      - install-dependencies
       - lint-and-typecheck:
           requires:
             - install-dependencies
