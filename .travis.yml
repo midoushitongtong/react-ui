@@ -4,6 +4,7 @@ node_js:
 script: yarn install && yarn test:nowatch && yarn build-storybook
 deploy:
   provider: pages
+  edge: true
   skip_cleanup: true
   github_token: $github_token
   local_dir: storybook-static
