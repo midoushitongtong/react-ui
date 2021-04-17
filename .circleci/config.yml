@@ -106,5 +106,4 @@ workflows:
             - install-dependencies
       - docs-depoly:
           requires:
-            - install-dependencies
             - docs-build
