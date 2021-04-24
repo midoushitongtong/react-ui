@@ -40,10 +40,11 @@ type ProductSelectItem = DataSourceItem & {
 
 const products: ProductSelectItem[] = [
   { value: '1', text: 'product1', amount: 1 },
-  { value: '2', text: 'product2', amount: 1 },
-  { value: '3', text: 'product3', amount: 1 },
-  { value: '4', text: 'product4', amount: 1 },
-  { value: '5', text: 'product5', amount: 1 },
+  { value: '2', text: 'product2', amount: 2 },
+  { value: '3', text: 'product3', amount: 3 },
+  { value: '4', text: 'product4', amount: 4 },
+  { value: '5', text: 'product5', amount: 5 },
+  { value: '6', text: 'product6', amount: 6 },
 ];
 
 export const Default: Story<AutoCompleteProps> = (args) => {
