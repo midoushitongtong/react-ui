@@ -44,7 +44,6 @@ const products: ProductSelectItem[] = [
   { value: '3', text: 'product3', amount: 3 },
   { value: '4', text: 'product4', amount: 4 },
   { value: '5', text: 'product5', amount: 5 },
-  { value: '6', text: 'product6', amount: 6 },
 ];
 
 export const Default: Story<AutoCompleteProps> = (args) => {
